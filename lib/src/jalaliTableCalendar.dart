@@ -88,6 +88,7 @@ class CalendarDayPicker extends StatelessWidget {
     required this.firstDate,
     required this.lastDate,
     required this.displayedMonth,
+    required this.selectedDayCircleColor,
     this.marker,
     this.events,
     this.selectableDayPredicate,
@@ -122,6 +123,9 @@ class CalendarDayPicker extends StatelessWidget {
 
   /// The month whose days are displayed by this picker.
   final DateTime displayedMonth;
+
+  /// The color of selected day
+  final Color selectedDayCircleColor;
 
   /// Optional user supplied predicate function to customize selectable days.
   final CalendarSelectableDayPredicate? selectableDayPredicate;
@@ -307,7 +311,7 @@ class CalendarDayPicker extends StatelessWidget {
           itemStyle = themeData.textTheme.bodyText2
               ?.copyWith(color: themeData.scaffoldBackgroundColor);
           decoration = BoxDecoration(
-              color: themeData.primaryColor, shape: BoxShape.circle);
+              color: selectedDayCircleColor, shape: BoxShape.circle);
         } else if (disabled) {
           itemStyle = themeData.textTheme.bodyText2!
               .copyWith(color: themeData.disabledColor);
@@ -423,6 +427,7 @@ class CalendarMonthPicker extends StatefulWidget {
     required this.onChanged,
     required this.firstDate,
     required this.lastDate,
+    required this.selectedDayCircleColor,
     this.marker,
     this.events,
     this.selectableDayPredicate,
@@ -454,6 +459,9 @@ class CalendarMonthPicker extends StatefulWidget {
 
   /// Optional user supplied predicate function to customize selectable days.
   final CalendarSelectableDayPredicate? selectableDayPredicate;
+
+  /// The color of selected day circle
+  final Color selectedDayCircleColor;
 
   @override
   _CalendarMonthPickerState createState() => _CalendarMonthPickerState();
@@ -557,6 +565,7 @@ class _CalendarMonthPickerState extends State<CalendarMonthPicker>
       onChanged: widget.onChanged,
       firstDate: widget.firstDate,
       marker: widget.marker,
+      selectedDayCircleColor: widget.selectedDayCircleColor,
       lastDate: widget.lastDate,
       events: widget.events,
       displayedMonth: month,
@@ -802,6 +811,7 @@ class _DatePickerCalendar extends StatefulWidget {
       this.initialDate,
       this.firstDate,
       this.lastDate,
+      required this.selectedDayCircleColor,
       this.selectableDayPredicate,
       this.initialDatePickerMode,
       this.selectedFormat,
@@ -817,6 +827,7 @@ class _DatePickerCalendar extends StatefulWidget {
   final DateTime? initialDate;
   final DateTime? firstDate;
   final DateTime? lastDate;
+  final Color selectedDayCircleColor;
   final CalendarSelectableDayPredicate? selectableDayPredicate;
   final DatePickerModeCalendar? initialDatePickerMode;
   final String? selectedFormat;
@@ -925,6 +936,7 @@ class _DatePickerCalendarState extends State<_DatePickerCalendar> {
           events: widget.events,
           firstDate: widget.firstDate!,
           lastDate: widget.lastDate!,
+          selectedDayCircleColor: widget.selectedDayCircleColor,
           selectableDayPredicate: widget.selectableDayPredicate,
         );
       case DatePickerModeCalendar.year:
@@ -996,6 +1008,7 @@ typedef CalendarSelectableDayPredicate = bool Function(DateTime day);
 ///  * <https://material.google.com/components/pickers.html#pickers-date-pickers>
 class JalaliTableCalendar extends StatefulWidget {
   final BuildContext context;
+  final Color selectedDayCircleColor;
   final CalendarSelectableDayPredicate? selectableDayPredicate;
   final DatePickerModeCalendar initialDatePickerMode;
   final String? selectedFormat;
@@ -1011,6 +1024,7 @@ class JalaliTableCalendar extends StatefulWidget {
 
   JalaliTableCalendar(
       {required this.context,
+      required this.selectedDayCircleColor,
       this.selectableDayPredicate,
       this.selectedFormat,
       this.locale,
@@ -1058,6 +1072,7 @@ class _JalaliTableCalendarState extends State<JalaliTableCalendar> {
       initialDate: initialDate,
       firstDate: firstDate,
       lastDate: lastDate,
+      selectedDayCircleColor: widget.selectedDayCircleColor,
       selectableDayPredicate: widget.selectableDayPredicate,
       initialDatePickerMode: widget.initialDatePickerMode,
       selectedFormat: widget.selectedFormat ?? "yyyy-mm-dd HH:nn:ss",

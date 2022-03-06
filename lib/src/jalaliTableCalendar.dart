@@ -275,7 +275,7 @@ class CalendarDayPicker extends StatelessWidget {
         final bool disabled = dayToBuild.isAfter(lastDate) ||
             dayToBuild.isBefore(firstDate) ||
             (selectableDayPredicate != null && !selectableDayPredicate!(dayToBuild)) ||
-            dayToBuild.isBefore(currentDate.add(Duration(days: 1)));
+            dayToBuild.isBefore(currentDate.subtract(Duration(days: 1)));
 
         BoxDecoration? decoration;
         TextStyle? itemStyle = themeData.textTheme.bodyText1;

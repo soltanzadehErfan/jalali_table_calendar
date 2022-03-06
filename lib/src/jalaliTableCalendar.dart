@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:jalali_table_calendar/src/persian_date.dart';
+import 'package:persian_number_utility/persian_number_utility.dart';
 
 /// Initial display mode of the date picker calendar.
 ///
@@ -169,7 +170,7 @@ class CalendarDayPicker extends StatelessWidget {
     final List<Widget> result = <Widget>[];
     for (String dayHeader in dayH) {
       result.add(ExcludeSemantics(
-        child: Center(child: Text(dayHeader)),
+        child: Center(child: Text(dayHeader.toPersianDigit())),
       ));
     }
     return result;
@@ -343,7 +344,7 @@ class CalendarDayPicker extends StatelessWidget {
                       '${localizations.formatDecimal(day)}, ${localizations.formatFullDate(dayToBuild)}',
                   selected: isSelectedDay,
                   child: ExcludeSemantics(
-                    child: Text(day.toString(), style: itemStyle),
+                    child: Text(day.toString().toPersianDigit(), style: itemStyle),
                   ),
                 ),
               ),
@@ -380,7 +381,7 @@ class CalendarDayPicker extends StatelessWidget {
                 child: Center(
                   child: ExcludeSemantics(
                     child: Text(
-                      "${pDate.monthname}  ${pDate.year}",
+                      "${pDate.monthname}  ${pDate.year}".toPersianDigit(),
                       style: themeData.textTheme.headline5,
                     ),
                   ),
@@ -786,7 +787,7 @@ class _CalendarYearPickerState extends State<CalendarYearPicker> {
           child: Center(
             child: Semantics(
               selected: isSelected,
-              child: Text(pYear.year.toString(), style: itemStyle),
+              child: Text(pYear.year.toString().toPersianDigit(), style: itemStyle),
             ),
           ),
         );

@@ -967,7 +967,7 @@ class JalaliTableCalendar extends StatefulWidget {
   final bool hour24Format;
   final TimeOfDay? initialTime;
   final MarkerBuilder? marker;
-  final Map<DateTime, List>? events;
+  final Map<DateTime, String>? events;
   final OnDaySelected? onDaySelected;
 
   JalaliTableCalendar(

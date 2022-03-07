@@ -302,7 +302,7 @@ class CalendarDayPicker extends StatelessWidget {
 
         // prepare to events to return to view
         List? dayEvents = [];
-        // if (events![dayToBuild] != null) dayEvents = events;
+        if (events![dayToBuild] != null) dayEvents.add(events![dayToBuild]);
         //get Marker for day
         Widget mark = marker!(dayToBuild, dayEvents);
         Widget dayWidget = Container(
@@ -996,12 +996,12 @@ class _JalaliTableCalendarState extends State<JalaliTableCalendar> {
     DateTime initialDate = DateTime.now();
     DateTime firstDate = DateTime(DateTime.now().year);
     DateTime lastDate = DateTime(2200);
-    Map<DateTime, List>? formattedEvents = {};
-    // if (widget.events != null) {
-    //   widget.events!.forEach((key, value) {
-    //     formattedEvents[DateTime(key.year, key.month, key.day)] = value;
-    //   });
-    // }
+    Map<DateTime, String>? formattedEvents = {};
+    if (widget.events != null) {
+      widget.events!.forEach((key, value) {
+        formattedEvents[DateTime(key.year, key.month, key.day)] = value;
+      });
+    }
 
     assert(!initialDate.isBefore(firstDate), 'initialDate must be on or after firstDate');
     assert(!initialDate.isAfter(lastDate), 'initialDate must be on or before lastDate');
@@ -1022,7 +1022,7 @@ class _JalaliTableCalendarState extends State<JalaliTableCalendar> {
       hour24Format: widget.hour24Format,
       showTimePicker: widget.showTimePicker,
       marker: widget.marker,
-      events: widget.events,
+      events: formattedEvents,
       onDaySelected: widget.onDaySelected,
       convertToGregorian: widget.convertToGregorian,
       initialTime: widget.initialTime ?? TimeOfDay.now(),

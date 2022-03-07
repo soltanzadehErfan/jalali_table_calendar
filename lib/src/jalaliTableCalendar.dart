@@ -999,7 +999,7 @@ class _JalaliTableCalendarState extends State<JalaliTableCalendar> {
     Map<DateTime, List>? formattedEvents = {};
     if (widget.events != null) {
       widget.events!.forEach((key, value) {
-        formattedEvents[DateTime(key.year, key.month, key.day)] = value;
+        formattedEvents[DateTime(key.year, key.month, key.day)] = value as List;
       });
     }
 

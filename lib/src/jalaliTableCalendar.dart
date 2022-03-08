@@ -294,7 +294,7 @@ class CalendarDayPicker extends StatelessWidget {
           decoration = BoxDecoration(color: selectedDayCircleColor, shape: BoxShape.circle);
         } else if (disabled) {
           itemStyle = themeData.textTheme.bodyText2!.copyWith(color: themeData.disabledColor);
-        } else if (currentPDate.year == getPearData.year &&
+        } else if (isSelectedDay && currentPDate.year == getPearData.year &&
             currentPDate.month == getPearData.month &&
             currentPDate.day == day) {
           // The current day gets a different text color.
@@ -302,7 +302,14 @@ class CalendarDayPicker extends StatelessWidget {
         } else if (getHoliday.isHoliday) {
           // The current day gets a different text color.
           itemStyle = themeData.textTheme.bodyText2!.copyWith(color: Colors.red);
-        } else {
+        }
+        // else if (!isSelectedDay && (currentPDate.year == getPearData.year &&
+        //     currentPDate.month == getPearData.month &&
+        //     currentPDate.day == day)) {
+        //   /// Today but not selected
+        //   itemStyle = textStyle;
+        // }
+        else {
           itemStyle = textStyle;
         }
 

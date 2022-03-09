@@ -284,7 +284,7 @@ class CalendarDayPicker extends StatelessWidget {
             (selectableDayPredicate != null && !selectableDayPredicate!(dayToBuild)) ||
             dayToBuild.isBefore(currentDate.subtract(Duration(days: 1)));
 
-        final bool isOpen = openDays[day].isAtSameMomentAs(dayToBuild);
+        final bool isOpen = openDays.contains(dayToBuild);
 
         BoxDecoration? decoration;
         TextStyle? itemStyle = themeData.textTheme.bodyText1;

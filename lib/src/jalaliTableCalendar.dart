@@ -277,7 +277,7 @@ class CalendarDayPicker extends StatelessWidget {
         var jtgData =
             date.jalaliToGregorian(getPearData.year!, getPearData.month!, int.parse(pDay));
         final DateTime dayToBuild = DateTime(jtgData[0], jtgData[1], jtgData[2]);
-        final PersianDate getHoliday = PersianDate.pDate(gregorian: dayToBuild.toString());
+        // final PersianDate getHoliday = PersianDate.pDate(gregorian: dayToBuild.toString());
 
         final bool disabled = dayToBuild.isAfter(lastDate) ||
             dayToBuild.isBefore(firstDate) ||
@@ -304,10 +304,11 @@ class CalendarDayPicker extends StatelessWidget {
             currentPDate.day == day) {
           // The current day gets a different text color.
           itemStyle = themeData.textTheme.bodyText2!.copyWith(color: themeData.primaryColor);
-        } else if (getHoliday.isHoliday) {
-          // The current day gets a different text color.
-          itemStyle = themeData.textTheme.bodyText2!.copyWith(color: Colors.red);
         }
+        // else if (getHoliday.isHoliday) {
+        //   // The current day gets a different text color.
+        //   itemStyle = themeData.textTheme.bodyText2!.copyWith(color: Colors.red);
+        // }
         else if (!isSelectedDay && isOpen) {
           /// Today but not selected
           itemStyle = TextStyle(color: Color(0xFF446a18));

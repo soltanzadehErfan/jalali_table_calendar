@@ -310,7 +310,7 @@ class CalendarDayPicker extends StatelessWidget {
         }
         else if (!isSelectedDay && isOpen) {
           /// Today but not selected
-          itemStyle = TextStyle(color: Colors.green);
+          itemStyle = TextStyle(color: Color(0xFF446a18));
         }
         else {
           itemStyle = textStyle;

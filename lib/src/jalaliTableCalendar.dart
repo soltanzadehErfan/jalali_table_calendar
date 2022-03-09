@@ -88,8 +88,6 @@ class CalendarDayPicker extends StatelessWidget {
     required this.lastDate,
     required this.displayedMonth,
     required this.selectedDayCircleColor,
-    required this.isOpenTextStyle,
-    required this.isOpen,
     this.textStyle,
     this.marker,
     this.events,
@@ -130,11 +128,6 @@ class CalendarDayPicker extends StatelessWidget {
 
   /// Days number text style
   final TextStyle? textStyle;
-
-  /// Day is Open
-  final bool isOpen;
-
-  final TextStyle isOpenTextStyle;
 
   /// Optional user supplied predicate function to customize selectable days.
   final CalendarSelectableDayPredicate? selectableDayPredicate;
@@ -310,10 +303,12 @@ class CalendarDayPicker extends StatelessWidget {
           // The current day gets a different text color.
           itemStyle = themeData.textTheme.bodyText2!.copyWith(color: Colors.red);
         }
-        else if (isOpen && !isSelectedDay) {
-          /// Day is open
-          itemStyle = isOpenTextStyle;
-        }
+        // else if (!isSelectedDay && (currentPDate.year == getPearData.year &&
+        //     currentPDate.month == getPearData.month &&
+        //     currentPDate.day == day)) {
+        //   /// Today but not selected
+        //   itemStyle = textStyle;
+        // }
         else {
           itemStyle = textStyle;
         }
@@ -415,8 +410,6 @@ class CalendarMonthPicker extends StatefulWidget {
     required this.firstDate,
     required this.lastDate,
     required this.selectedDayCircleColor,
-    required this.isOpen,
-    required this.isOpenTextStyle,
     this.textStyle,
     this.marker,
     this.events,
@@ -454,12 +447,6 @@ class CalendarMonthPicker extends StatefulWidget {
 
   /// Days number text style
   final TextStyle? textStyle;
-
-  /// Day is open
-  final bool isOpen;
-
-  /// The open day text style
-  final TextStyle isOpenTextStyle;
 
   @override
   _CalendarMonthPickerState createState() => _CalendarMonthPickerState();
@@ -556,8 +543,6 @@ class _CalendarMonthPickerState extends State<CalendarMonthPicker>
       marker: widget.marker,
       selectedDayCircleColor: widget.selectedDayCircleColor,
       textStyle: widget.textStyle,
-      isOpen: widget.isOpen,
-      isOpenTextStyle: widget.isOpenTextStyle,
       lastDate: widget.lastDate,
       events: widget.events,
       displayedMonth: month,
@@ -793,8 +778,6 @@ class _DatePickerCalendar extends StatefulWidget {
       this.firstDate,
       this.lastDate,
       required this.selectedDayCircleColor,
-      required this.isOpen,
-      required this.isOpenTextStyle,
       this.textStyle,
       this.selectableDayPredicate,
       this.initialDatePickerMode,
@@ -813,8 +796,6 @@ class _DatePickerCalendar extends StatefulWidget {
   final DateTime? lastDate;
   final Color selectedDayCircleColor;
   final TextStyle? textStyle;
-  final bool isOpen;
-  final TextStyle isOpenTextStyle;
   final CalendarSelectableDayPredicate? selectableDayPredicate;
   final DatePickerModeCalendar? initialDatePickerMode;
   final String? selectedFormat;
@@ -925,8 +906,6 @@ class _DatePickerCalendarState extends State<_DatePickerCalendar> {
           lastDate: widget.lastDate!,
           selectedDayCircleColor: widget.selectedDayCircleColor,
           textStyle: widget.textStyle,
-          isOpen: widget.isOpen,
-          isOpenTextStyle: widget.isOpenTextStyle,
           selectableDayPredicate: widget.selectableDayPredicate,
         );
       case DatePickerModeCalendar.year:
@@ -1000,8 +979,6 @@ class JalaliTableCalendar extends StatefulWidget {
   final BuildContext context;
   final Color selectedDayCircleColor;
   final TextStyle? textStyle;
-  final bool isOpen;
-  final TextStyle isOpenTextStyle;
   final CalendarSelectableDayPredicate? selectableDayPredicate;
   final DatePickerModeCalendar initialDatePickerMode;
   final String? selectedFormat;
@@ -1018,8 +995,6 @@ class JalaliTableCalendar extends StatefulWidget {
   JalaliTableCalendar(
       {required this.context,
       required this.selectedDayCircleColor,
-      required this.isOpen,
-      required this.isOpenTextStyle,
       this.textStyle,
       this.selectableDayPredicate,
       this.selectedFormat,
@@ -1065,8 +1040,6 @@ class _JalaliTableCalendarState extends State<JalaliTableCalendar> {
       lastDate: lastDate,
       selectedDayCircleColor: widget.selectedDayCircleColor,
       textStyle: widget.textStyle,
-      isOpen: widget.isOpen,
-      isOpenTextStyle: widget.isOpenTextStyle,
       selectableDayPredicate: widget.selectableDayPredicate,
       initialDatePickerMode: widget.initialDatePickerMode,
       selectedFormat: widget.selectedFormat ?? "yyyy-mm-dd HH:nn:ss",

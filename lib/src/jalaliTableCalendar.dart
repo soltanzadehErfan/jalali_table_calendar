@@ -299,7 +299,8 @@ class CalendarDayPicker extends StatelessWidget {
           decoration = BoxDecoration(color: selectedDayCircleColor, shape: BoxShape.circle);
         } else if (disabled) {
           itemStyle = themeData.textTheme.bodyText2!.copyWith(color: themeData.disabledColor);
-        } else if (isSelectedDay && currentPDate.year == getPearData.year &&
+        } else if (isSelectedDay &&
+            currentPDate.year == getPearData.year &&
             currentPDate.month == getPearData.month &&
             currentPDate.day == day) {
           // The current day gets a different text color.
@@ -312,8 +313,7 @@ class CalendarDayPicker extends StatelessWidget {
         else if (!isSelectedDay && isOpen) {
           /// Today but not selected
           itemStyle = TextStyle(color: Color(0xFF446a18));
-        }
-        else {
+        } else {
           itemStyle = textStyle;
         }
 
@@ -342,7 +342,13 @@ class CalendarDayPicker extends StatelessWidget {
                   ),
                 ),
               ),
-              if (marker != null && events != null && events![dayToBuild] != null && dayToBuild.isAfter(currentDate)) mark
+              if (marker != null &&
+                  events != null &&
+                  events![dayToBuild] != null &&
+                  dayToBuild.isAfter(
+                    currentDate.subtract(Duration(days: 1)),
+                  ))
+                mark
             ],
           ),
         );
@@ -780,26 +786,25 @@ class _CalendarYearPickerState extends State<CalendarYearPicker> {
 }
 
 class _DatePickerCalendar extends StatefulWidget {
-  const _DatePickerCalendar(
-      {Key? key,
-      this.initialDate,
-      this.firstDate,
-      this.lastDate,
-      required this.selectedDayCircleColor,
-      this.textStyle,
-      this.selectableDayPredicate,
-      this.initialDatePickerMode,
-      this.selectedFormat,
-      this.showTimePicker,
-      this.convertToGregorian,
-      this.initialTime,
-      this.onDaySelected,
-      this.marker,
-      this.events,
-      this.hour24Format,
-      required this.openDays,
-      })
-      : super(key: key);
+  const _DatePickerCalendar({
+    Key? key,
+    this.initialDate,
+    this.firstDate,
+    this.lastDate,
+    required this.selectedDayCircleColor,
+    this.textStyle,
+    this.selectableDayPredicate,
+    this.initialDatePickerMode,
+    this.selectedFormat,
+    this.showTimePicker,
+    this.convertToGregorian,
+    this.initialTime,
+    this.onDaySelected,
+    this.marker,
+    this.events,
+    this.hour24Format,
+    required this.openDays,
+  }) : super(key: key);
 
   final DateTime? initialDate;
   final DateTime? firstDate;

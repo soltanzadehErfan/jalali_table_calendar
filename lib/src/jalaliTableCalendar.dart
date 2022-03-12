@@ -342,7 +342,7 @@ class CalendarDayPicker extends StatelessWidget {
                   ),
                 ),
               ),
-              if (marker != null && events != null && events![dayToBuild] != null) mark
+              if (marker != null && events != null && events![dayToBuild] != null && dayToBuild.isAfter(currentDate)) mark
             ],
           ),
         );
@@ -860,19 +860,6 @@ class _DatePickerCalendarState extends State<_DatePickerCalendar> {
   DatePickerModeCalendar? _mode;
   final GlobalKey _pickerKey = GlobalKey();
 
-  void _vibrate() {
-    switch (Theme.of(context).platform) {
-      case TargetPlatform.android:
-      case TargetPlatform.fuchsia:
-        HapticFeedback.vibrate();
-        break;
-      case TargetPlatform.iOS:
-        break;
-      default:
-        break;
-    }
-  }
-
   // void _handleModeChanged(DatePickerModeCalendar mode) {
   //   _vibrate();
   //   setState(() {
@@ -888,7 +875,6 @@ class _DatePickerCalendarState extends State<_DatePickerCalendar> {
   // }
 
   void _handleYearChanged(DateTime value) {
-    _vibrate();
     setState(() {
       _mode = DatePickerModeCalendar.day;
       _selectedDate = value;
@@ -897,7 +883,6 @@ class _DatePickerCalendarState extends State<_DatePickerCalendar> {
 
   void _handleDayChanged(DateTime value) {
     if (widget.onDaySelected != null) widget.onDaySelected!(value);
-    _vibrate();
     setState(() {
       _selectedDate = value;
     });

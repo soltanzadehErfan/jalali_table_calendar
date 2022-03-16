@@ -279,7 +279,7 @@ class CalendarDayPicker extends StatelessWidget {
         final DateTime dayToBuild = DateTime(jtgData[0], jtgData[1], jtgData[2]);
         // final PersianDate getHoliday = PersianDate.pDate(gregorian: dayToBuild.toString());
 
-        final bool disabled = dayToBuild.isAfter(lastDate) ||
+        final bool disabled = dayToBuild.isAfter(lastDate.add(Duration(days: 30))) ||
             dayToBuild.isBefore(firstDate) ||
             (selectableDayPredicate != null && !selectableDayPredicate!(dayToBuild)) ||
             dayToBuild.isBefore(currentDate.subtract(Duration(days: 1)));

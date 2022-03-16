@@ -634,36 +634,38 @@ class _CalendarMonthPickerState extends State<CalendarMonthPicker>
             ),
           ),
         ),
-        PositionedDirectional(
-          top: 0.0,
-          start: 8.0,
-          child: Semantics(
-            sortKey: _MonthPickerSortKey.previousMonth,
-            child: FadeTransition(
-              opacity: _chevronOpacityAnimation,
-              child: IconButton(
-                icon: const Icon(Icons.chevron_left),
-                tooltip: _isDisplayingFirstMonth
-                    ? null
-                    : '${localizations.previousMonthTooltip} ${localizations.formatMonthYear(_previousMonthDate)}',
-                onPressed: _isDisplayingFirstMonth ? null : _handlePreviousMonth,
+        Material(
+          color: Colors.transparent,
+          child: PositionedDirectional(
+            top: 0.0,
+            start: 8.0,
+            child: Semantics(
+              sortKey: _MonthPickerSortKey.previousMonth,
+              child: FadeTransition(
+                opacity: _chevronOpacityAnimation,
+                child: IconButton(
+                  icon: const Icon(Icons.chevron_left),
+                  tooltip: "ماه قبل",
+                  onPressed: _isDisplayingFirstMonth ? null : _handlePreviousMonth,
+                ),
               ),
             ),
           ),
         ),
-        PositionedDirectional(
-          top: 0.0,
-          end: 8.0,
-          child: Semantics(
-            sortKey: _MonthPickerSortKey.nextMonth,
-            child: FadeTransition(
-              opacity: _chevronOpacityAnimation,
-              child: IconButton(
-                icon: const Icon(Icons.chevron_right),
-                tooltip: _isDisplayingLastMonth
-                    ? null
-                    : '${localizations.nextMonthTooltip} ${localizations.formatMonthYear(_nextMonthDate)}',
-                onPressed: _isDisplayingLastMonth ? null : _handleNextMonth,
+        Material(
+          color: Colors.transparent,
+          child: PositionedDirectional(
+            top: 0.0,
+            end: 8.0,
+            child: Semantics(
+              sortKey: _MonthPickerSortKey.nextMonth,
+              child: FadeTransition(
+                opacity: _chevronOpacityAnimation,
+                child: IconButton(
+                  icon: const Icon(Icons.chevron_right),
+                  tooltip: "ماه بعد",
+                  onPressed: _isDisplayingLastMonth ? null : _handleNextMonth,
+                ),
               ),
             ),
           ),

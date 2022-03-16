@@ -637,17 +637,20 @@ class _CalendarMonthPickerState extends State<CalendarMonthPicker>
         PositionedDirectional(
           top: 0.0,
           start: 8.0,
-          child: Material(
-            color: Colors.transparent,
+          child: ClipRRect(
             borderRadius: BorderRadius.circular(50),
-            child: Semantics(
-              sortKey: _MonthPickerSortKey.previousMonth,
-              child: FadeTransition(
-                opacity: _chevronOpacityAnimation,
-                child: IconButton(
-                  icon: const Icon(Icons.chevron_left),
-                  tooltip: "ماه قبل",
-                  onPressed: _isDisplayingFirstMonth ? null : _handlePreviousMonth,
+            child: Material(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(50),
+              child: Semantics(
+                sortKey: _MonthPickerSortKey.previousMonth,
+                child: FadeTransition(
+                  opacity: _chevronOpacityAnimation,
+                  child: IconButton(
+                    icon: const Icon(Icons.chevron_left),
+                    tooltip: "ماه قبل",
+                    onPressed: _isDisplayingFirstMonth ? null : _handlePreviousMonth,
+                  ),
                 ),
               ),
             ),
@@ -656,17 +659,20 @@ class _CalendarMonthPickerState extends State<CalendarMonthPicker>
         PositionedDirectional(
           top: 0.0,
           end: 8.0,
-          child: Material(
-            color: Colors.transparent,
+          child: ClipRRect(
             borderRadius: BorderRadius.circular(50),
-            child: Semantics(
-              sortKey: _MonthPickerSortKey.nextMonth,
-              child: FadeTransition(
-                opacity: _chevronOpacityAnimation,
-                child: IconButton(
-                  icon: const Icon(Icons.chevron_right),
-                  tooltip: "ماه بعد",
-                  onPressed: _isDisplayingLastMonth ? null : _handleNextMonth,
+            child: Material(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(50),
+              child: Semantics(
+                sortKey: _MonthPickerSortKey.nextMonth,
+                child: FadeTransition(
+                  opacity: _chevronOpacityAnimation,
+                  child: IconButton(
+                    icon: const Icon(Icons.chevron_right),
+                    tooltip: "ماه بعد",
+                    onPressed: _isDisplayingLastMonth ? null : _handleNextMonth,
+                  ),
                 ),
               ),
             ),

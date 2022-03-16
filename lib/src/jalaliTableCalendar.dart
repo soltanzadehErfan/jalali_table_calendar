@@ -1022,7 +1022,7 @@ class _JalaliTableCalendarState extends State<JalaliTableCalendar> {
   Widget build(BuildContext context) {
     DateTime initialDate = DateTime.now();
     DateTime firstDate = DateTime(DateTime.now().year, DateTime.now().month);
-    DateTime lastDate = DateTime(2200);
+    DateTime lastDate = DateTime(DateTime.now().year, DateTime.now().month + 1);
     Map<DateTime, String>? formattedEvents = {};
     if (widget.events != null) {
       widget.events!.forEach((key, value) {

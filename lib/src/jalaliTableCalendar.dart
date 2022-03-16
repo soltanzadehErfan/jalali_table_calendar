@@ -634,11 +634,12 @@ class _CalendarMonthPickerState extends State<CalendarMonthPicker>
             ),
           ),
         ),
-        Material(
-          color: Colors.transparent,
-          child: PositionedDirectional(
-            top: 0.0,
-            start: 8.0,
+        PositionedDirectional(
+          top: 0.0,
+          start: 8.0,
+          child: Material(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(50),
             child: Semantics(
               sortKey: _MonthPickerSortKey.previousMonth,
               child: FadeTransition(
@@ -652,11 +653,12 @@ class _CalendarMonthPickerState extends State<CalendarMonthPicker>
             ),
           ),
         ),
-        Material(
-          color: Colors.transparent,
-          child: PositionedDirectional(
-            top: 0.0,
-            end: 8.0,
+        PositionedDirectional(
+          top: 0.0,
+          end: 8.0,
+          child: Material(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(50),
             child: Semantics(
               sortKey: _MonthPickerSortKey.nextMonth,
               child: FadeTransition(

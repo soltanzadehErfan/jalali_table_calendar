@@ -628,6 +628,7 @@ class _CalendarMonthPickerState extends State<CalendarMonthPicker>
                 controller: _dayPickerController,
                 scrollDirection: Axis.horizontal,
                 itemCount: _monthDelta(widget.firstDate, widget.lastDate) + 1,
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: _buildItems,
                 onPageChanged: _handleMonthPageChanged,
               ),

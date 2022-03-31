@@ -282,7 +282,7 @@ class CalendarDayPicker extends StatelessWidget {
         final bool disabled =
             // (dayToBuild.isAfter(lastDate.add(Duration(days: 60))) &&
             //     dayToBuild.add(Duration(days: 30)).isAfter(currentDate))
-            dayToBuild.isAfter(currentDate.add(Duration(days: 30)))
+            dayToBuild.isAfter(currentDate.add(Duration(days: 31)))
             ||
             dayToBuild.isBefore(firstDate) ||
             (selectableDayPredicate != null && !selectableDayPredicate!(dayToBuild)) ||

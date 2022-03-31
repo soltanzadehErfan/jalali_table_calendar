@@ -279,7 +279,7 @@ class CalendarDayPicker extends StatelessWidget {
         final DateTime dayToBuild = DateTime(jtgData[0], jtgData[1], jtgData[2]);
         // final PersianDate getHoliday = PersianDate.pDate(gregorian: dayToBuild.toString());
 
-        final bool disabled = dayToBuild.isAfter(lastDate.add(Duration(days: 30))) ||
+        final bool disabled = dayToBuild.isAfter(lastDate.add(Duration(days: 60))) ||
             dayToBuild.isBefore(firstDate) ||
             (selectableDayPredicate != null && !selectableDayPredicate!(dayToBuild)) ||
             dayToBuild.isBefore(currentDate.subtract(Duration(days: 1)));
@@ -1033,7 +1033,7 @@ class _JalaliTableCalendarState extends State<JalaliTableCalendar> {
   Widget build(BuildContext context) {
     DateTime initialDate = DateTime.now();
     DateTime firstDate = DateTime(DateTime.now().year, DateTime.now().month);
-    DateTime lastDate = DateTime(DateTime.now().year, DateTime.now().month + 1);
+    DateTime lastDate = DateTime(DateTime.now().year, DateTime.now().month + 2);
     Map<DateTime, String>? formattedEvents = {};
     if (widget.events != null) {
       widget.events!.forEach((key, value) {

@@ -391,6 +391,7 @@ class CalendarDayPicker extends StatelessWidget {
               Flexible(
                 child: GridView.custom(
                   gridDelegate: _kDayPickerGridDelegate,
+                  physics: BouncingScrollPhysics(),
                   childrenDelegate: SliverChildListDelegate(labels, addRepaintBoundaries: false),
                 ),
               ),
@@ -775,7 +776,6 @@ class _CalendarYearPickerState extends State<CalendarYearPicker> {
       controller: scrollController,
       itemExtent: _itemExtent,
       itemCount: widget.lastDate.year - widget.firstDate.year + 1,
-      physics: BouncingScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
         final int year = widget.firstDate.year + index;
         final bool isSelected = year == widget.selectedDate.year;

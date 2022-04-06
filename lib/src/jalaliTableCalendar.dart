@@ -282,11 +282,10 @@ class CalendarDayPicker extends StatelessWidget {
         final bool disabled =
             // (dayToBuild.isAfter(lastDate.add(Duration(days: 60))) &&
             //     dayToBuild.add(Duration(days: 30)).isAfter(currentDate))
-            dayToBuild.isAfter(currentDate.add(Duration(days: 31)))
-            ||
-            dayToBuild.isBefore(firstDate) ||
-            (selectableDayPredicate != null && !selectableDayPredicate!(dayToBuild)) ||
-            dayToBuild.isBefore(currentDate.subtract(Duration(days: 1)));
+            dayToBuild.isAfter(currentDate.add(Duration(days: 31))) ||
+                dayToBuild.isBefore(firstDate) ||
+                (selectableDayPredicate != null && !selectableDayPredicate!(dayToBuild)) ||
+                dayToBuild.isBefore(currentDate.subtract(Duration(days: 1)));
 
         final bool isOpen = openDays.contains(dayToBuild);
 
@@ -326,37 +325,39 @@ class CalendarDayPicker extends StatelessWidget {
         if (events![dayToBuild] != null) dayEvents.add(events![dayToBuild]);
         //get Marker for day
         Widget mark = marker!(dayToBuild, dayEvents);
-        Widget dayWidget = MouseRegion(
-          cursor: disabled ? SystemMouseCursors.none : SystemMouseCursors.click,
-          child: Container(
-            decoration: decoration,
-            margin: EdgeInsets.all(1),
-            child: Stack(
-              children: [
-                Center(
-                  child: Semantics(
-                    // We want the day of month to be spoken first irrespective of the
-                    // locale-specific preferences or TextDirection. This is because
-                    // an accessibility user is more likely to be interested in the
-                    // day of month before the rest of the date, as they are looking
-                    // for the day of month. To do that we prepend day of month to the
-                    // formatted full date.
-                    label:
-                    '${localizations.formatDecimal(day)}, ${localizations.formatFullDate(dayToBuild)}',
-                    selected: isSelectedDay,
-                    child: ExcludeSemantics(
-                      child: Text(day.toString().toPersianDigit(), style: itemStyle),
+        Widget dayWidget = Padding(
+          padding: EdgeInsets.all(1),
+          child: MouseRegion(
+            cursor: disabled ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
+            child: Container(
+              decoration: decoration,
+              child: Stack(
+                children: [
+                  Center(
+                    child: Semantics(
+                      // We want the day of month to be spoken first irrespective of the
+                      // locale-specific preferences or TextDirection. This is because
+                      // an accessibility user is more likely to be interested in the
+                      // day of month before the rest of the date, as they are looking
+                      // for the day of month. To do that we prepend day of month to the
+                      // formatted full date.
+                      label:
+                      '${localizations.formatDecimal(day)}, ${localizations.formatFullDate(dayToBuild)}',
+                      selected: isSelectedDay,
+                      child: ExcludeSemantics(
+                        child: Text(day.toString().toPersianDigit(), style: itemStyle),
+                      ),
                     ),
                   ),
-                ),
-                if (marker != null &&
-                    events != null &&
-                    events![dayToBuild] != null &&
-                    dayToBuild.isAfter(
-                      currentDate.subtract(Duration(days: 1)),
-                    ))
-                  mark
-              ],
+                  if (marker != null &&
+                      events != null &&
+                      events![dayToBuild] != null &&
+                      dayToBuild.isAfter(
+                        currentDate.subtract(Duration(days: 1)),
+                      ))
+                    mark
+                ],
+              ),
             ),
           ),
         );

@@ -327,9 +327,10 @@ class CalendarDayPicker extends StatelessWidget {
         //get Marker for day
         Widget mark = marker!(dayToBuild, dayEvents);
         Widget dayWidget = MouseRegion(
-          cursor: SystemMouseCursors.click,
+          cursor: disabled ? SystemMouseCursors.none : SystemMouseCursors.click,
           child: Container(
             decoration: decoration,
+            margin: EdgeInsets.all(1),
             child: Stack(
               children: [
                 Center(

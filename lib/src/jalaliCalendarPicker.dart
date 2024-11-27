@@ -1086,7 +1086,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
           .replaceAll("nn", "mm")
           .replaceAll("n", "m");
 
-      Navigator.pop(context, Jiffy(_selectedDate).format(selectedFormat));
+      Navigator.pop(context, Jiffy.parse(_selectedDate.toString()).format(pattern: selectedFormat));
     } else {
       Navigator.pop(context, selectpDate.getDate);
     }
@@ -1128,7 +1128,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
         child: _buildPicker(),
       ),
     );
-    final Widget actions = ButtonBar(
+    final Widget actions = OverflowBar(
       children: <Widget>[
         TextButton(
           child: Text("لغو"),

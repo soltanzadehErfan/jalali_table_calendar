@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  jiffy: ^5.0.0
-  persian_number_utility: ^1.1.1
+  jiffy: ^6.3.1
+  persian_number_utility: ^1.1.4
 
 dev_dependencies:
   flutter_test:
